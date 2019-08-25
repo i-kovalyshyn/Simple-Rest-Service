@@ -4,7 +4,6 @@ import edu.cursor.simple_rest_hw11.database.IService;
 
 import edu.cursor.simple_rest_hw11.object.Author;
 import edu.cursor.simple_rest_hw11.object.Book;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -13,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-//@AllArgsConstructor
+
 
 public class LibraryRestController {
 
@@ -24,14 +23,14 @@ public class LibraryRestController {
     }
 
     @ResponseBody
-    @GetMapping("/{id}")
-    public List<Book> sortedBookByAuthor(@PathVariable("id") int id) {
+    @GetMapping("/")
+    public List<Book> sortedBookByAuthor(@RequestParam int id) {
         return iService.sortedBookByAuthor(id);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{genre}", method = RequestMethod.GET)
-    public List<Book> sortedBookByGenre(@PathVariable("genre") String genre) {
+    @GetMapping("/genre")
+    public List<Book> sortedBookByGenre(@RequestParam String genre) {
         return iService.sortedBookByGenre(genre);
     }
 
@@ -93,7 +92,7 @@ public class LibraryRestController {
 
     @ResponseBody
     @PatchMapping("book/{id}")
-    public Book upadateBook(@RequestParam ("id")int updateId, @PathVariable("id")int id){
-        return iService.updateBook(id,updateId);
+    public Book upadateBook(@RequestParam("id") int updateId, @PathVariable("id") int id) {
+        return iService.updateBook(id, updateId);
     }
 }

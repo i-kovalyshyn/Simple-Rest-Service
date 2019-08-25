@@ -3,6 +3,7 @@ package edu.cursor.simple_rest_hw11.database;
 import edu.cursor.simple_rest_hw11.exception.NotFoundExceptions;
 import edu.cursor.simple_rest_hw11.object.Author;
 import edu.cursor.simple_rest_hw11.object.Book;
+import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
@@ -11,9 +12,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@org.springframework.stereotype.Service
+@Service
 
-public class Service implements IService {
+public class MyService implements IService {
 
     private List<Book> bookList = new ArrayList<>(Arrays.asList(
             new Book(1,"some Book one","Classic",
